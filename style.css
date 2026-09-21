@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+body {
+min-height: 100vh;
+overflow: hidden;
+background: linear-gradient(
+    to bottom,
+    #78bde8 0%,
+    #b8e3f2 55%,
+    #dcefc4 100%
+);
+font-family: Arial, sans-serif;
+}
+
+#jardin {
+position: relative;
+width: 100vw;
+height: 100vh;
+}
+
+#mensaje {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+z-index: 10;
+}
+
+#mensaje h1 {
+font-size: 80px;
+}
+
+#mensaje p {
+margin-top: 15px;
+font-size: 20px;
+}
+.flor {
+    position: absolute;
+    transform: translate(-50%, -100%) scale(0);
+    transform-origin: bottom center;
+    animation: crecer 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes crecer {
+    to {
+        transform: translate(-50%, -100%) scale(var(--escala));
+    }
+}
+
+.cabeza {
+font-size: 45px;
+line-height: 1;
+}
+
+.tallo {
+width: 5px;
+height: 70px;
+margin: -2px auto 0;
+background: #3d8b40;
+border-radius: 5px;
+}
+
+#mensaje {
+    color: #ffffff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.5s ease;
+    z-index: 10;
+}
+
+#mensaje p {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+#mensaje.final {
+    top: 35%;
+    width: 85%;
+    font-size: 18px;
+
+    animation:
+        aparecer 1.5s ease forwards;
+}
+
+#mensaje.final p + p {
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.flor-cabeza {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.petalo {
+    position: absolute;
+    width: 28px;
+    height: 40px;
+    background: #ffd92f;
+    border-radius: 50%;
+    left: 16px;
+    top: 10px;
+    transform-origin: 14px 20px;
+}
+
+.p1 {
+    transform: rotate(0deg) translateY(-15px);
+}
+
+.p2 {
+    transform: rotate(60deg) translateY(-15px);
+}
+
+.p3 {
+    transform: rotate(120deg) translateY(-15px);
+}
+
+.p4 {
+    transform: rotate(180deg) translateY(-15px);
+}
+
+.p5 {
+    transform: rotate(240deg) translateY(-15px);
+}
+
+.p6 {
+    transform: rotate(300deg) translateY(-15px);
+}
+
+.centro {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #8b5a2b;
+    border-radius: 50%;
+    left: 18px;
+    top: 18px;
+    z-index: 2;
+}
+.flor {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    transform-origin: bottom center;
+    pointer-events: none;
+    animation: crecer 0.6s ease-out forwards;
+    
+    z-index: 2;
+
+}
+
+@keyframes viento {
+    0%, 100% {
+        rotate: -2deg;
+    }
+
+    50% {
+        rotate: 2deg;
+    }
+}
+.flor.crecida {
+    animation: viento var(--duracion) ease-in-out infinite;
+}
+
+@keyframes viento {
+    0%, 100% {
+        transform: translate(-50%, -100%)
+                   rotate(var(--inclinacion))
+                   scale(var(--escala));
+    }
+
+    50% {
+        transform: translate(-50%, -100%)
+                   rotate(calc(var(--inclinacion) * -1))
+                   scale(var(--escala));
+    }
+}
+
+#suelo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 18%;
+
+    background: #6fa34a;
+
+    border-radius: 50% 50% 0 0 / 15% 15% 0 0;
+
+    z-index: 0;
+}
+#hierba {
+    position: absolute;
+    bottom: 14%;
+    left: 0;
+
+    width: 100%;
+    height: 35px;
+
+    z-index: 1;
+
+    background:
+        repeating-linear-gradient(
+            75deg,
+            transparent 0,
+            transparent 10px,
+            rgba(50, 110, 45, 0.45) 11px,
+            transparent 13px
+        ),
+        repeating-linear-gradient(
+            105deg,
+            transparent 0,
+            transparent 15px,
+            rgba(70, 130, 55, 0.35) 16px,
+            transparent 18px
+        );
+
+    animation: hierbaViento 2.5s ease-in-out infinite alternate;
+}
+
+#sol {
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    top: 10%;
+    right: 12%;
+
+    border-radius: 50%;
+
+    background: #ffd966;
+
+    box-shadow:
+        0 0 25px rgba(255, 217, 102, 0.7),
+        0 0 60px rgba(255, 217, 102, 0.35);
+
+    z-index: 0;
+}
