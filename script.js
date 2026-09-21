@@ -66,11 +66,7 @@ function crearFlor() {
 
     const profundidad = Math.random();
 
-    const alturaSuelo = window.innerHeight * 0.18;
-
-    flor.style.top = `${
-        window.innerHeight - alturaSuelo + profundidad * 60
-    }px`;
+ flor.style.top = `calc(82% + ${profundidad * 60}px)`;
 
     // Tamaño aleatorio
     const escala = 0.5 + profundidad * 0.8;
